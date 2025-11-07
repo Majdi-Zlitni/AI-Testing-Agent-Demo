@@ -1,0 +1,45 @@
+# Dependency directories
+/bin/
+/obj/
+
+# Visual Studio / Rider supporting files
+.vs/
+.idea/
+
+# User-specific files
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# Secrets
+appsettings.Development.json
+secrets.json
+
+# Log files
+*.log
+
+# Other
+*.suo
+*.vssscc
+*.vspscc
+*~
+
+# NuGet packages
+*.nupkg
+*.nuget.props
+*.nuget.targets
+
+# Playwright browsers
+/playwright-browsers/
+/assets
