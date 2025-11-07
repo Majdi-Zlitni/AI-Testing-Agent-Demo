@@ -9,10 +9,7 @@ public class PlaywrightTestExecutor
     {
         using var playwright = await Playwright.CreateAsync();
         await using var browser = await playwright.Chromium.LaunchAsync(
-            new BrowserTypeLaunchOptions
-            {
-                Headless = false, // Set to false so we can watch the browser
-            }
+            new BrowserTypeLaunchOptions { Headless = false, }
         );
 
         var page = await browser.NewPageAsync();
@@ -48,9 +45,6 @@ public class PlaywrightTestExecutor
                             );
                         break;
                     case "verify_contains_text":
-                        // --- THE FIX IS HERE ---
-                        // The .First property tells Playwright to only consider the first matching
-                        // element, which resolves the strict mode violation if multiple elements are found.
                         await Assertions
                             .Expect(page.Locator($"*:has-text('{step.Value}')").First)
                             .ToBeVisibleAsync();

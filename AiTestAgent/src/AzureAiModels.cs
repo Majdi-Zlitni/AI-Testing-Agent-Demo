@@ -2,7 +2,6 @@
 
 namespace AiTestAgent;
 
-// Represents the overall request payload sent to the Azure AI endpoint.
 public class AzureAiRequest
 {
     [JsonPropertyName("input_data")]
@@ -14,13 +13,11 @@ public class AzureAiRequest
     }
 }
 
-// Contains the actual prompt string.
 public class RequestInputData
 {
     [JsonPropertyName("input_string")]
     public List<string> InputString { get; set; }
 
-    // Optional parameters to control the model's generation.
     [JsonPropertyName("parameters")]
     public Dictionary<string, object> Parameters { get; set; } =
         new()
@@ -37,8 +34,6 @@ public class RequestInputData
     }
 }
 
-// Represents the structure of the response from the endpoint.
-// The model's output is often a list of dictionaries or objects.
 public class AzureAiResponse
 {
     [JsonPropertyName("output")]

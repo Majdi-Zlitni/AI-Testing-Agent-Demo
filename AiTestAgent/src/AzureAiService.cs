@@ -5,7 +5,7 @@ using Azure.Identity;
 using OpenAI;
 using OpenAI.Chat;
 
-#pragma warning disable OPENAI001 // This is required for the new token-based authentication.
+#pragma warning disable OPENAI001
 
 namespace AiTestAgent;
 
@@ -47,11 +47,10 @@ public class AzureAiService
 
         try
         {
-            // THE FIX IS HERE: Changed new[] to new ChatMessage[]
             ChatCompletion completion = await client.CompleteChatAsync(
                 new ChatMessage[]
                 {
-                    new SystemChatMessage("You are an expert QA Automation Engineer."),
+                    new SystemChatMessage("You are an expert Automation Engineer."),
                     new UserChatMessage(prompt),
                 }
             );
@@ -87,30 +86,30 @@ public class AzureAiService
     private string BuildPrompt(string userStory)
     {
         return @"
-Analyze the following user story and generate a precise test plan in a specific JSON format.
-The JSON output should be a single, clean, valid JSON object ready for parsing. Do not include any text, notes, or markdown formatting outside of the main JSON object.
+                Analyze the following user story and generate a precise test plan in a specific JSON format.
+                The JSON output should be a single, clean, valid JSON object ready for parsing. Do not include any text, notes, or markdown formatting outside of the main JSON object.
 
-The JSON object must conform to this structure:
-{
-  ""test_plan"": [
-    {
-      ""step"": <integer>,
-      ""description"": ""<string>"",
-      ""element"": ""<string: ID, selector, or name>"",
-      ""action"": ""<string: navigate, type, click, verify_contains_text, verify_url_path>"",
-      ""value"": ""<string: URL, text to type, text to verify, etc.>""
-    }
-  ]
-}
+                The JSON object must conform to this structure:
+                {
+                  ""test_plan"": [
+                    {
+                      ""step"": <integer>,
+                      ""description"": ""<string>"",
+                      ""element"": ""<string: ID, selector, or name>"",
+                      ""action"": ""<string: navigate, type, click, verify_contains_text, verify_url_path>"",
+                      ""value"": ""<string: URL, text to type, text to verify, etc.>""
+                    }
+                  ]
+                }
 
-Here is the user story:
----
-"
+                Here is the user story:
+                ---
+                "
             + userStory
             + @"
----
+                ---
 
-Generate the JSON test plan now.
-";
+                Generate the JSON test plan now.
+                ";
     }
 }
