@@ -17,7 +17,7 @@ public class TestStep
     [JsonPropertyName("element")]
     public string? Element { get; set; }
 
-    // The action to perform (e.g., "navigate", "type", "click", "verify_contains_text").
+    // The action to perform (e.g., "navigate", "type", "click"...).
     [JsonPropertyName("action")]
     public string Action { get; set; } = string.Empty;
 

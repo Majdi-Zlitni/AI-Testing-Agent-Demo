@@ -9,7 +9,7 @@ public class PlaywrightTestExecutor
     {
         using var playwright = await Playwright.CreateAsync();
         await using var browser = await playwright.Chromium.LaunchAsync(
-            new BrowserTypeLaunchOptions { Headless = false, }
+            new BrowserTypeLaunchOptions { Headless = false }
         );
 
         var page = await browser.NewPageAsync();
